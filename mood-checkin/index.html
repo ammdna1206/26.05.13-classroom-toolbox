@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日心情簽到</title>
+    <meta name="description" content="記錄你今日的心情，獲取專屬鼓勵，開啟美好的一天。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        返回首頁
+    </a>
+    <div class="container">
+        <header>
+            <h1 id="main-title">今日心情簽到</h1>
+            <p class="subtitle">選一個最能代表你現在心情的表情符號吧！</p>
+        </header>
+
+        <main class="mood-selector">
+            <button class="mood-btn" id="happy-btn" aria-label="開心" data-mood="happy">
+                <span class="emoji">😊</span>
+            </button>
+            <button class="mood-btn" id="neutral-btn" aria-label="普通" data-mood="neutral">
+                <span class="emoji">😐</span>
+            </button>
+            <button class="mood-btn" id="sad-btn" aria-label="難過" data-mood="sad">
+                <span class="emoji">😢</span>
+            </button>
+        </main>
+
+        <section id="feedback-area" class="hidden">
+            <div class="feedback-card">
+                <div class="status-badge">今日簽到成功</div>
+                <p id="encouragement-msg"></p>
+                <button id="reset-btn">重新簽到</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

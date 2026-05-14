@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>討論燈號 - 課堂管理工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <a href="../index.html" class="back-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                返回首頁
+            </a>
+            <h1>討論燈號</h1>
+        </header>
+
+        <main>
+            <div id="status-light" class="light green">
+                <div class="light-inner"></div>
+                <div class="light-glow"></div>
+            </div>
+            
+            <div class="status-info">
+                <h2 id="status-text">請保持討論</h2>
+            </div>
+        </main>
+
+        <footer class="controls">
+            <button id="btn-green" class="control-btn active" data-state="green">
+                <span class="btn-icon green"></span>
+                討論中
+            </button>
+            <button id="btn-yellow" class="control-btn" data-state="yellow">
+                <span class="btn-icon yellow"></span>
+                注意音量
+            </button>
+            <button id="btn-red" class="control-btn" data-state="red">
+                <span class="btn-icon red"></span>
+                請安靜
+            </button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

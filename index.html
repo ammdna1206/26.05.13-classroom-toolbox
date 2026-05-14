@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教學工具箱 - 我的數位教室</title>
+    <meta name="description" content="為教師設計的數位工具集合，包含計時器、金句、討論燈號、心情簽到及公告跑馬燈。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <header>
+            <div class="header-top">
+                <button id="share-btn" class="share-btn" title="分享工具箱">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                    分享工具
+                </button>
+            </div>
+            <h1>教學工具箱</h1>
+            <p class="subtitle">讓課堂互動更輕鬆、更有趣</p>
+        </header>
+
+        <main class="tools-grid">
+            <!-- Countdown Timer Card -->
+            <a href="countdown-timer/index.html" class="tool-card" id="timer-tool">
+                <div class="card-icon">⏱️</div>
+                <div class="card-content">
+                    <h2>全螢幕倒數計時器</h2>
+                    <p>直覺的介面，讓時間管理一目了然。</p>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Quote Generator Card -->
+            <a href="quote-generator/index.html" class="tool-card" id="quote-tool">
+                <div class="card-icon">✨</div>
+                <div class="card-content">
+                    <h2>每日勵志金句</h2>
+                    <p>隨機抽取溫暖文字，為學生加油打氣。</p>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Discussion Light Card -->
+            <a href="discussion-light/index.html" class="tool-card" id="light-tool">
+                <div class="card-icon">🚦</div>
+                <div class="card-content">
+                    <h2>討論燈號</h2>
+                    <p>直覺的燈號顯示，引導學生控制討論音量。</p>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Mood Check-in Card -->
+            <a href="mood-checkin/index.html" class="tool-card" id="mood-tool">
+                <div class="card-icon">😊</div>
+                <div class="card-content">
+                    <h2>心情打卡</h2>
+                    <p>關心學生的每日心情，建立溫馨的班級連結。</p>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Marquee Board Card -->
+            <a href="marquee-board/index.html" class="tool-card" id="marquee-tool">
+                <div class="card-icon">📢</div>
+                <div class="card-content">
+                    <h2>跑馬燈公告欄</h2>
+                    <p>現代感的滾動公告，傳遞課堂重要資訊。</p>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 數位教室工具箱 | 持續更新中</p>
+        </footer>
+    </div>
+    <div id="toast" class="toast">連結已複製！</div>
+    <script src="assets/script.js"></script>
+</body>
+</html>

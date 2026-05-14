@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全螢幕倒數計時器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        返回首頁
+    </a>
+    <div id="app" class="container">
+        <!-- Setup View -->
+        <div id="setup-view" class="view active">
+            <div class="setup-card">
+                <h1>設定倒數時間</h1>
+                <div class="input-group">
+                    <input type="number" id="minutes-input" min="1" max="999" value="1" placeholder="分鐘">
+                </div>
+                <button id="start-btn">開始計時</button>
+            </div>
+        </div>
+
+
+        <!-- Timer View -->
+        <div id="timer-view" class="view">
+            <div id="timer-display" class="timer-display">00:00</div>
+        </div>
+
+        <!-- Alarm View -->
+        <div id="alarm-view" class="view">
+            <div class="alarm-message">時間到<br>請看黑板</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
