@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剪刀石頭布 - 教學工具箱</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <a href="../index.html" class="back-btn">
+        <span>←</span> 返回首頁
+    </a>
+
+    <header style="margin-top: 4rem; text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 800;">✌️ 視訊剪刀石頭布</h1>
+        <p style="opacity: 0.8;">使用手勢與智能 AI 進行對決</p>
+    </header>
+
+    <div class="game-container">
+        <!-- 視訊與辨識區域 -->
+        <div class="video-section">
+            <video id="video-element" autoplay playsinline></video>
+            <canvas id="canvas-element"></canvas>
+            <div id="countdown-overlay" class="countdown-overlay">3</div>
+        </div>
+
+        <!-- 遊戲狀態區域 -->
+        <div class="info-section">
+            <!-- 分數板 -->
+            <div class="card">
+                <div class="score-board">
+                    <div class="score-item">
+                        <span>玩家</span>
+                        <div id="player-score">0</div>
+                    </div>
+                    <div style="opacity: 0.3;">:</div>
+                    <div class="score-item">
+                        <span>AI 對手</span>
+                        <div id="ai-score">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 當前回合 -->
+            <div class="card">
+                <div id="round-display" style="font-size: 1.1rem; margin-bottom: 0.5rem; opacity: 0.8;">第 1 / 5 回合</div>
+                <div id="status-display" class="status-display">等待開始...</div>
+            </div>
+
+            <!-- 控制按鈕 -->
+            <div class="controls">
+                <button id="start-btn" class="btn-primary">開始回合 (空白鍵)</button>
+                <button id="reset-btn" class="btn-secondary">重新開始 (R)</button>
+            </div>
+
+            <!-- 手勢提示 -->
+            <div class="card" style="font-size: 0.9rem; opacity: 0.8;">
+                <p>💡 提示：倒數結束時請在鏡頭前出拳</p>
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 0.5rem; font-size: 1.5rem;">
+                    <span>✊</span><span>✌️</span><span>✋</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
