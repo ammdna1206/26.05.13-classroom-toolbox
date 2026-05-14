@@ -1,237 +1,141 @@
-/* 
- * rock-paper-scissors/style.css
- * 現代化設計風格：毛玻璃效果、漸層背景
- */
-
 :root {
     --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --text-color: #f8fafc;
+    --bg: #0f172a;
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text: #f8fafc;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
 body {
-    background: var(--bg-gradient);
-    min-height: 100vh;
+    background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--text-color);
-    overflow: hidden;
+    color: var(--text);
+    overflow: hidden; /* 禁止捲動 */
+    padding: 10px;
 }
 
-/* 背景裝飾 */
-.background-blobs {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* 頂部導覽列：超緊湊 */
+.top-nav {
     width: 100%;
-    height: 100%;
-    z-index: -1;
-    filter: blur(80px);
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.4;
-}
+.mini-title { font-size: 1.1rem; font-weight: 800; color: #818cf8; }
 
-.blob-1 {
-    width: 400px;
-    height: 400px;
-    background: #4f46e5;
-    top: -100px;
-    right: -100px;
-}
-
-.blob-2 {
-    width: 300px;
-    height: 300px;
-    background: #ec4899;
-    bottom: -50px;
-    left: -50px;
-}
-
-/* 遊戲容器 */
-.game-container {
-    width: 90%;
-    max-width: 1200px;
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 2rem;
-}
-
-/* 視訊區域 */
-.video-section {
-    position: relative;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+.back-btn {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    background: var(--glass);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    overflow: hidden;
-    aspect-ratio: 4/3;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
 }
 
-#video-element {
+/* 核心遊戲容器：保證不超出螢幕 */
+.game-container {
+    width: 100%;
+    max-width: 1000px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 15px;
+    min-height: 0; /* 讓內容可以縮小 */
+    padding-bottom: 10px;
+}
+
+/* 視訊區域：自動縮放 */
+.video-section {
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid var(--glass-border);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    height: 100%; /* 填滿格子 */
+}
+
+#video-element, #canvas-element {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scaleX(-1); /* 鏡像翻轉 */
-}
-
-#canvas-element {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     transform: scaleX(-1);
 }
 
-/* 遊戲資訊區域 */
+/* 側邊欄：緊湊排列 */
 .info-section {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 10px;
+    height: 100%;
 }
 
 .card {
-    background: var(--glass-bg);
+    background: var(--glass);
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 1.5rem;
+    border-radius: 15px;
+    padding: 12px;
     text-align: center;
 }
 
+/* 分數板：現代風 */
 .score-board {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 800;
 }
+.score-label { font-size: 0.7rem; color: #94a3b8; display: block; }
 
-.score-item span {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #94a3b8;
-    margin-bottom: 0.5rem;
-}
-
-/* 狀態顯示 */
+/* 狀態區：醒目色 */
 .status-display {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    min-height: 3.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #818cf8;
+    color: #60a5fa;
+    min-height: 1.5rem;
 }
 
-/* 按鈕 */
+/* 按鈕：改用橫向排列，節省高度 */
 .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: auto; /* 靠底部對齊 */
 }
 
 button {
-    padding: 1rem;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
     border: none;
-    border-radius: 16px;
-    font-size: 1.1rem;
-    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: var(--primary);
+    background: #6366f1;
     color: white;
+    transition: all 0.3s;
 }
 
-.btn-primary:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-}
+button:hover { background: #4f46e5; transform: translateY(-2px); }
+.btn-reset { background: rgba(255,255,255,0.1); }
 
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid var(--glass-border);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* 倒數動畫 */
-.countdown-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
-    font-size: 12rem;
-    font-weight: 900;
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.countdown-overlay.active {
-    opacity: 1;
-}
-
-/* 返回按鈕 */
-.back-btn {
-    position: fixed;
-    top: 1.5rem;
-    left: 1.5rem;
-    padding: 0.75rem 1.25rem;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    z-index: 100;
-}
-
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* 響應式優化 */
-@media (max-width: 968px) {
-    .game-container {
-        grid-template-columns: 1fr;
-    }
-    .info-section {
-        order: -1;
-    }
+/* 提示訊息：更小一點 */
+.hint-text {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-top: 5px;
 }
